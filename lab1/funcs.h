@@ -7,7 +7,13 @@ void fun6(double&);
 void _fun6(double*);
 
 struct Circle {
+private:
     int x, y, rad;
+
+public:
+    void fun11(int&);
+    void _fun11(int*);
+    void displayRad();
 
     Circle(int x, int y, int rad) {
         this->x = x;
@@ -15,9 +21,6 @@ struct Circle {
         this->rad = rad;
     }
 };
-
-void fun11(Circle&, int);
-void _fun11(Circle*, int);
 
 void fun14(int (&)[3][3]);
 void _fun14(int *);

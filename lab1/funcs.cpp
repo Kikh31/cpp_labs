@@ -1,4 +1,5 @@
 #include "funcs.h"
+#include <iostream>
 
 void fun3(int &x, int &y) {
     if(x > y) x = x % y;
@@ -22,12 +23,16 @@ void _fun6(double *x) {
     else *x = (double)res + 1;
 }
 
-void fun11(Circle& c, int x) {
-    c.rad -= x;
+void Circle::fun11(int &x) {
+    rad -=x;
 }
 
-void _fun11(Circle* c, int x) {
-    c->rad -= x;
+void Circle::_fun11(int *x) {
+    rad -= *x;
+}
+
+void Circle::displayRad() {
+    std::cout<<rad<<'\n';
 }
 
 void fun14(int (&m)[3][3]) {
