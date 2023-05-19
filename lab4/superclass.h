@@ -50,5 +50,5 @@ public:
     virtual unsigned int size() = 0;
 };
 
-class Figure : public IGeoFig, public CVector2D, public IPhysObject, public IPrintable, public IDialogInitiable,
+class Figure : public IGeoFig, public IPhysObject, public IPrintable, public IDialogInitiable,
                public BaseCObject{};
