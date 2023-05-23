@@ -12,7 +12,7 @@ private:
     int capacity;
     int index;
 public:
-    CircIterator(T *_buffer, int _capacity, int _index) : buffer(_buffer), capacity(_capacity + 1), index(_index) {}
+    CircIterator(T *_buffer, int _capacity, int _index) : buffer(_buffer), capacity(_capacity), index(_index) {}
 
     T &operator*() {
         return buffer[index];
@@ -100,11 +100,15 @@ private:
     int tail, head;
 public:
     explicit CircBuff(int _capacity) : capacity(_capacity), size(0), tail(0), head(0) {
-        buffer = new T[_capacity+1];
+        buffer = new T[_capacity];
     }
 
     ~CircBuff() {
         delete[] buffer;
+    }
+
+    int get_capacity() {
+        return capacity;
     }
 
     int get_size() {
@@ -157,12 +161,12 @@ public:
 
     void insert(CircIterator<T> it, T val) {
         int index = it - begin();
-        buffer[index] = val;
+        (*this)[index] = val;
     }
 
-    void erase(CircIterator<T> it, T val) {
+    void erase(CircIterator<T> it) {
         int index = it - begin();
-        buffer[index] = -INT_MAX;
+        (*this)[index] = -INT_MAX;
     }
 
     T &front() {
@@ -190,14 +194,20 @@ public:
             cout<<"New capacity is less than current size!"<<'\n';
         }
         T* new_buffer = new T[new_capacity];
-        int j = 0;
-        for (auto i = begin(); i != end(); i++, j++) {
-            new_buffer[j] = *i;
+        for (int i = 0; i < get_size(); i++) {
+            new_buffer[i] = (*this)[i];
         }
         delete[] buffer;
         buffer = new_buffer;
         capacity = new_capacity;
         head = 0;
         tail = get_size();
+    }
+
+    void print() {
+        for(int i = 0; i < get_size(); i++) {
+            cout<<(*this)[i]<<" ";
+        }
+        cout<<'\n';
     }
 };
