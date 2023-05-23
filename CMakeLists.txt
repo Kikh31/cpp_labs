@@ -12,3 +12,4 @@ add_executable(lab4 lab4/superclass.h lab4/eqTriangle.h lab4/eqTriangle.cpp lab4
         lab4/lab4.cpp)
 add_executable(lab5 lab5/stack.h lab5/lab5.cpp)
 add_executable(lab6 lab6/MyFuncs.h lab6/lab6.cpp)
+add_executable(lab7 lab7/CircularBuffer.h lab7/lab7.cpp)
